@@ -9,7 +9,8 @@
 | `index.html` | 1 枚サイト本体（事業者名・事業内容・アプリ紹介・連絡先） |
 | `style.css` | スタイル（外部フォント・CDN・JS なし） |
 | `CNAME` | GitHub Pages のカスタムドメイン設定（`afropunx.com`） |
-| `PUBLISH.md` | 公開手順書（Pages 設定・DNS・各種確認） |
+| `.nojekyll` | **削除禁止。** Jekyll 処理を無効化する。無いと本書や `PUBLISH.md` 内の `{{` を Liquid が誤解釈してビルドが失敗し、サイトが配信されなくなる（詳細は `PUBLISH.md` 冒頭「前提」） |
+| `PUBLISH.md` | 公開手順書（Pages 設定・DNS・各種確認）と実施記録 |
 
 ## プレースホルダ（公開前に実値へ置換）
 
@@ -18,7 +19,9 @@
 | `{{OFFICE_ADDRESS}}` | 事業所住所 |
 | `{{PHONE}}` | 事業用電話番号 |
 
-置換漏れの確認: `grep -rn "{{" .` が 0 件になること。
+置換漏れの確認: `grep -n "{{" index.html` が 0 件になること。
+
+（本書と `PUBLISH.md` の `{{` は手順の説明として残るため、リポジトリ全体への `grep -rn "{{" .` は 0 件にならない。判定対象は `index.html` のみ）
 
 ## 方針
 
